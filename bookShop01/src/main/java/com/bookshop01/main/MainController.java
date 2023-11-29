@@ -19,6 +19,9 @@ import com.bookshop01.goods.service.GoodsService;
 import com.bookshop01.goods.vo.GoodsVO;
 
 @Controller("mainController")
+
+//AOP´Â ±âº»ÀûÀ¸·Î ÇÁ·Ï½Ã ¹æ½ÄÀ¸·Î µ¿ÀÛÀ» ÇÑ´Ù.
+//AOP ¸¦ È°¿ëÇÏ±â À§ÇØ¼­´Â @EnableAspectJAutoProxy¾î³ëÅ×ÀÌ¼ÇÀ» ºÙ¿©ÁÖ¾î¾ßÇÑ´Ù.
 @EnableAspectJAutoProxy
 public class MainController extends BaseController {
 	@Autowired
@@ -29,13 +32,12 @@ public class MainController extends BaseController {
 		HttpSession session;
 		ModelAndView mav=new ModelAndView();
 		String viewName=(String)request.getAttribute("viewName");
-		// viewName ì§€ì •
 		mav.setViewName(viewName);
 		
-		//ë¡œê·¸ì¸ í•œ ì‚¬ìš©ì(ê´€ë¦¬ì(admin), ì¼ë°˜ ì‚¬ìš©ì(ê³ ê°)ì— ë”°ë¼ í™”ë©´ì˜ êµ¬ì„±ì´ ë‹¬ë¼ì§€ê²Œ í•˜ê¸° ìœ„í•´ ì„¸ì…˜ì— ì €ì¥ëœ ì‚¬ìš©ìë³„ë¡œ í™”ë©´ êµ¬ì„±ì„ ë‹¬ë¦¬í•¨.)
+		//·Î±×ÀÎ ÇÑ »ç¿ëÀÚ(°ü¸®ÀÚ(admin), ÀÏ¹İ »ç¿ëÀÚ(°í°´))¿¡ µû¶ó È­¸éÀÇ ±¸¼ºÀÌ ´Ş¶óÁö°Ô ÇÏ±â À§ÇÏ¿©
+		//¼¼¼Ç¿¡ ÀúÀåµÈ »ç¿ëÀÚ º°·Î È­¸é ±¸¼ºÀ» ´Ş¸®ÇÑ´Ù.
 		session=request.getSession();
 		session.setAttribute("side_menu", "user");
-		//ì¡°íšŒ ìƒí’ˆ ëª©ë¡ goodsMapì— ì €ì¥
 		Map<String,List<GoodsVO>> goodsMap=goodsService.listGoods();
 		mav.addObject("goodsMap", goodsMap);
 		return mav;

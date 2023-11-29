@@ -2,6 +2,9 @@ package com.bookshop01.member.vo;
 
 import org.springframework.stereotype.Component;
 
+
+
+//Bean Configuration 파일에 Bean 을 따로 등록하지 않아도 사용할 수 있다.
 @Component("memberVO")
 public class MemberVO {
 	private String member_id;

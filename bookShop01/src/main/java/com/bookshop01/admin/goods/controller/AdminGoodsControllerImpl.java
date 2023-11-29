@@ -23,11 +23,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+//-------------------------------------------------------------------------------
+// 패키지 임포트
+
+//어드민 굿즈 서비스 
 import com.bookshop01.admin.goods.service.AdminGoodsService;
+
+//파일 정보 
 import com.bookshop01.common.base.BaseController;
+
+//굿즈 정보 DB
 import com.bookshop01.goods.vo.GoodsVO;
+
+//이미지 파일 정보 DB
 import com.bookshop01.goods.vo.ImageFileVO;
+
+//Member 정보 DB
 import com.bookshop01.member.vo.MemberVO;
+
+
+
+
 
 @Controller("adminGoodsController")
 @RequestMapping(value="/admin/goods")
