@@ -1,2 +1,2 @@
-# Study-Day1
-1일차
+# Project-study
+도서 쇼핑몰 구현하기
