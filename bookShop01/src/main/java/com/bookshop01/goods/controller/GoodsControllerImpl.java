@@ -53,7 +53,7 @@ public class GoodsControllerImpl extends BaseController   implements GoodsContro
 		keyword = keyword.toUpperCase();
 	    List<String> keywordList =goodsService.keywordSearch(keyword);
 	    
-	 // ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½ï¿½ï¿½ JSONObject ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Ã¼)
+	 // ÃÖÁ¾ ¿Ï¼ºµÉ JSONObject ¼±¾ð(ÀüÃ¼)
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("keyword", keywordList);
 		 		
@@ -70,15 +70,16 @@ public class GoodsControllerImpl extends BaseController   implements GoodsContro
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("goodsList", goodsList);
 		return mav;
+		
 	}
 	
 	private void addGoodsInQuick(String goods_id,GoodsVO goodsVO,HttpSession session){
 		boolean already_existed=false;
-		List<GoodsVO> quickGoodsList; 
+		List<GoodsVO> quickGoodsList; //ÃÖ±Ù º» »óÇ° ÀúÀå ArrayList
 		quickGoodsList=(ArrayList<GoodsVO>)session.getAttribute("quickGoodsList");
 		
 		if(quickGoodsList!=null){
-			if(quickGoodsList.size() < 4){
+			if(quickGoodsList.size() < 4){ //¹Ì¸®º» »óÇ° ¸®½ºÆ®¿¡ »óÇ°°³¼ö°¡ ¼¼°³ ÀÌÇÏÀÎ °æ¿ì
 				for(int i=0; i<quickGoodsList.size();i++){
 					GoodsVO _goodsBean=(GoodsVO)quickGoodsList.get(i);
 					if(goods_id.equals(_goodsBean.getGoods_id())){

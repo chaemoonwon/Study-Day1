@@ -2,44 +2,117 @@ package com.bookshop01.order.vo;
 
 import org.springframework.stereotype.Component;
 
+//Spring 에서 관리하는 컴포넌트로 등록하겠다는 표시
+//orderVO의 이름으로 빈을 참조할 수 있다.
 @Component("orderVO")
+//주문정보
 public class OrderVO {
+	
+	//주문 일련번호
 	private int order_seq_num;
+	
+	//주문한 회원의 아이디
 	private String member_id;
+	
+	//주문ID
 	private int order_id;
+	
+	//상품 ID
 	private int goods_id;
+	
+	//상품제목
 	private String goods_title;
+	
+	//상품 판매 가격
 	private int goods_sales_price;
+	
+	//주문한 상품의 총 가격
 	private int total_goods_price;
+	
+	//장바구니에 담긴 제품의 수
 	private int cart_goods_qty; //장바구니에 담긴 제품 수
+	
+	//최종 주문한 제품의 수
 	private int order_goods_qty; //최종 주문  제품 수
+	
+	//주문자의 이름
 	private String orderer_name;
+	
+	//수령인의 이름
 	private String receiver_name;
+	
+	//수령인의 휴대전화 번호 / 3 구역으로 나눠서 작성
+	// 010
 	private String receiver_hp1;
+	
+	//0000
 	private String receiver_hp2;
+	
+	//0000
 	private String receiver_hp3;
+	
+	//수령인의 일반 전화번호를 구성하는 부분
+	//위와 같은 형태
 	private String receiver_tel1;
 	private String receiver_tel2;
 	private String receiver_tel3;
 	
+	
+//	<배송 조회 부분 / 배송 정보 입력>--------------------------------------------------------------
+	
+	//배송 주소
 	private String delivery_address;
+	
+	//배송 메시지
 	private String delivery_message;
+	
+	//배송 방법
 	private String delivery_method;
+	
+	//선물 포장 여부
 	private String gift_wrapping;
+	
+	//결제 방법
 	private String pay_method;
+	
+	//카드 결제 시 카드 회사 이름
 	private String card_com_name;
+	
+	//카드 결제 시 할부 개월 수
 	private String card_pay_month;
+	
+	//휴대폰 결제 시 주문자 휴대폰 번호
 	private String pay_orderer_hp_num; //휴대폰 결제 전화번호
+	
+	//결제 일시
 	private String pay_order_time;
+	
+	//현재 주문 상품의 배송 상태
 	private String delivery_state;  //현재 주문 상품 배송 상태
 	
+	
+//	--------------------------------------------------------------
+	
+	
+	//최종 총 가격
 	private String final_total_price;
+	
+	//상품 수량
 	private int goods_qty;
+	
+	//상품 파일 이름(이미지 등)
 	private String goods_fileName;
+	
+	//주문자의 휴대폰 번호
 	private String orderer_hp;
 	
 	
 	
+	
+	
+	
+//	--------------------------------------------------------------
+//	<get / set>	
 	
 	
 	public int getOrder_seq_num() {

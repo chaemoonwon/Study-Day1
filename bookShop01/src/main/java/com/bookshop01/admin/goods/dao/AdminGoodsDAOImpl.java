@@ -34,7 +34,7 @@ public class AdminGoodsDAOImpl  implements AdminGoodsDAO{
 		
 	@Override
 	public List<GoodsVO>selectNewGoodsList(Map condMap) throws DataAccessException {
-		ArrayList<GoodsVO> goodsList=(ArrayList)sqlSession.selectList("mapper.admin.goods.selectNewGoodsList",condMap);
+		ArrayList<GoodsVO>  goodsList=(ArrayList)sqlSession.selectList("mapper.admin.goods.selectNewGoodsList",condMap);
 		return goodsList;
 	}
 	
