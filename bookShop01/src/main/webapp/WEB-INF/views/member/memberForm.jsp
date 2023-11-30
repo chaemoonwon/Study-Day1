@@ -94,7 +94,37 @@ function fn_overlapped(){
           //alert("작업을완료 했습니다");
        }
     });  //end ajax	 
- }	
+ }
+
+var compare_result = false;
+
+function fn_compare_pwd() {
+	var pwd1 = $('#member_pwd1').val();		//val()메서드는 값을 가져오는 메서드
+	var pwd2 = $('#member_pwd2').val();
+	var s_result = $('#result').val()
+
+	if(pwd1 == pwd2) {
+		alert(pwd1);
+		alert(pwd2);
+		compare_result = true;
+		$('#result').text('비밀번호가 일치합니다.');
+	}else {
+		compare_result = false;
+		$('#result').text('비밀번호가 일치하지 않습니다.');
+	}
+}
+
+// function fn_join_member() {
+// 	if(compare_result == true) {
+// 		//회원 가입 요청
+// 		alert('회원 가입을 진행합니다')
+// 	}else {
+// 		alert('비밀번호가 일치하지 않습니다.')
+// 	}
+// }
+
+
+
 </script>
 </head>
 
@@ -118,7 +148,13 @@ function fn_overlapped(){
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join">비밀번호</td>
-					<td><input name="member_pw" type="password" size="20" /></td>
+					<td><input name="member_pw" id="member_pwd1" type="password" size="20" /></td>
+				</tr>
+				<tr class="dot_line">
+					<td class="fixed_join">비밀번호 확인</td>
+					<td><input name="member_pw2" id="member_pwd2" type="password" size="20" onKeyUp="fn_compare_pwd()" />
+						<span style='font-size:10px' id="result">비밀번호가 일치하지 않습니다.</span>
+					</td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join">이름</td>
@@ -260,8 +296,9 @@ function fn_overlapped(){
 		<table align=center>
 		<tr >
 			<td >
-			<button type="submit" class="btn btn-outline-primary">회원 가입</button>
-			<button type="reset" class="btn btn-outline-danger">다시입력</button>
+
+				<input type="submit" class="btn btn-outline-primary" value="회원 가입">
+				<input type="reset" class="btn btn-outline-danger" value="다시입력">
 			
 			<!-- 	<input type="submit"  value="회원 가입">
 				<input  type="reset"  value="다시입력"> -->

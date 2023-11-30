@@ -43,29 +43,46 @@ public class CartControllerImpl extends BaseController implements CartController
 		String member_id=memberVO.getMember_id();
 		cartVO.setMember_id(member_id);
 		Map<String ,List> cartMap=cartService.myCartList(cartVO);
-		session.setAttribute("cartMap", cartMap);//Àå¹Ù±¸´Ï ¸ñ·Ï È­¸é¿¡¼­ »óÇ° ÁÖ¹® ½Ã »ç¿ëÇÏ±â À§ÇØ¼­ Àå¹Ù±¸´Ï ¸ñ·ÏÀ» ¼¼¼Ç¿¡ ÀúÀåÇÑ´Ù.
+		session.setAttribute("cartMap", cartMap);//ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ È­ï¿½é¿¡ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½Ö¹ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		//mav.addObject("cartMap", cartMap);
 		return mav;
 	}
 	@RequestMapping(value="/addGoodsInCart.do" ,method = RequestMethod.POST,produces = "application/text; charset=utf8")
 	public  @ResponseBody String addGoodsInCart(@RequestParam("goods_id") int goods_id,
-			                    HttpServletRequest request, HttpServletResponse response)  throws Exception{
+												HttpServletRequest request, HttpServletResponse response)  throws Exception{
+
 		HttpSession session=request.getSession();
+		session=request.getSession();
+
+		Boolean isLogOn=(Boolean)session.getAttribute("isLogOn");
+		String action=(String)session.getAttribute("action");
+		//ë¡œê·¸ì¸ ì—¬ë¶€ ì²´í¬
+		//ì´ì „ì— ë¡œê·¸ì¸ ìƒíƒœì¸ ê²½ìš°ëŠ” ì£¼ë¬¸ê³¼ì • ì§„í–‰
+		//ë¡œê·¸ì•„ì›ƒ ìƒíƒœì¸ ê²½ìš° ë¡œê·¸ì¸ í™”ë©´ìœ¼ë¡œ ì´ë™
+		if(isLogOn==null || isLogOn==false){
+			session.setAttribute("action", "/cart/addGoodsInCart.do");
+			return "log_on";
+		}
+
+
 		memberVO=(MemberVO)session.getAttribute("memberInfo");
 		String member_id=memberVO.getMember_id();
-		
+
 		cartVO.setMember_id(member_id);
-		//Ä«Æ® µî·ÏÀü¿¡ ÀÌ¹Ì µî·ÏµÈ Á¦Ç°ÀÎÁö ÆÇº°ÇÑ´Ù.
+		//ì¹´íŠ¸ ë“±ë¡ì „ì— ì´ë¯¸ ë“±ë¡ëœ ì œí’ˆì¸ì§€ íŒë³„í•œë‹¤.
 		cartVO.setGoods_id(goods_id);
-		cartVO.setMember_id(member_id);
-		boolean isAreadyExisted=cartService.findCartGoods(cartVO);
+
+
+		boolean isAreadyExisted=cartService.findCartGoods(cartVO);	//true , falseë¥¼ ë°˜í™˜
 		System.out.println("isAreadyExisted:"+isAreadyExisted);
+
 		if(isAreadyExisted==true){
-			return "already_existed";
+			return "already_existed";	// ì¥ë°”êµ¬ë‹ˆì— ìˆëŠ” ìƒí’ˆ(ì´ë¯¸ ë“±ë¡ëœ ìƒí’ˆ)
 		}else{
 			cartService.addGoodsInCart(cartVO);
-			return "add_success";
+			return "add_success";		// ì¥ë°”êµ¬ë‹ˆì— ì¶”ê°€í•´ì•¼í•  ìƒí’ˆ
 		}
+
 	}
 	
 	@RequestMapping(value="/modifyCartQty.do" ,method = RequestMethod.POST)

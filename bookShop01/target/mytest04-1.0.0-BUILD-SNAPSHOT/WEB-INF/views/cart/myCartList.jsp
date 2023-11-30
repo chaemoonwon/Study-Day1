@@ -21,7 +21,8 @@
 <script type="text/javascript">
 function calcGoodsPrice(bookPrice,obj){
 	var totalPrice,final_total_price,totalNum;
-	var goods_qty=document.getElementById("select_goods_qty");
+	//상품 수량
+	var goods_qty=document.getElementById("cart_goods_qty");
 	//alert("총 상품금액"+goods_qty.value);
 	var p_totalNum=document.getElementById("p_totalNum");
 	var p_totalPrice=document.getElementById("p_totalPrice");
@@ -119,7 +120,7 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 	var total_price,final_total_price,_goods_qty;
 	var cart_goods_qty=document.getElementById("cart_goods_qty");
 	
-	_order_goods_qty=cart_goods_qty.value; //장바구니에 담긴 개수 만큼 주문한다.
+	__qty=cart_goods_qty.value; //장바구니에 담긴 개수 만큼 주문한다.
 	var formObj=document.createElement("form");
 	var i_goods_id = document.createElement("input"); 
     var i_goods_title = document.createElement("input");

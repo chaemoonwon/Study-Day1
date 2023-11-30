@@ -53,7 +53,7 @@ public class GoodsControllerImpl extends BaseController   implements GoodsContro
 		keyword = keyword.toUpperCase();
 	    List<String> keywordList =goodsService.keywordSearch(keyword);
 	    
-	 // ���� �ϼ��� JSONObject ����(��ü)
+	 // ���� �ϼ��� JSONObject ����(��ü)
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("keyword", keywordList);
 		 		
@@ -72,32 +72,40 @@ public class GoodsControllerImpl extends BaseController   implements GoodsContro
 		return mav;
 		
 	}
-	
+
 	private void addGoodsInQuick(String goods_id,GoodsVO goodsVO,HttpSession session){
 		boolean already_existed=false;
-		List<GoodsVO> quickGoodsList; //�ֱ� �� ��ǰ ���� ArrayList
+		List<GoodsVO> quickGoodsList;
+		// quickGoodsList라는 속성 명을 가지고 옴
 		quickGoodsList=(ArrayList<GoodsVO>)session.getAttribute("quickGoodsList");
-		
-		if(quickGoodsList!=null){
-			if(quickGoodsList.size() < 4){ //�̸��� ��ǰ ����Ʈ�� ��ǰ������ ���� ������ ���
+
+
+		if(quickGoodsList!=null){				// 최근 본 상품이 있는 경우
+			if(quickGoodsList.size() < 4){		//상품 목록이 4개 이하인 경우
 				for(int i=0; i<quickGoodsList.size();i++){
 					GoodsVO _goodsBean=(GoodsVO)quickGoodsList.get(i);
-					if(goods_id.equals(_goodsBean.getGoods_id())){
-						already_existed=true;
+					// quickGoodsList에서 가져온 goods_id가  goods_id와 같은지 확인
+					if(goods_id.equals(Integer.toString(_goodsBean.getGoods_id()))){	//goods_id의 타입을 일치시켜 같은 값 중복 제거
+						already_existed=true;	//같다면  true
 						break;
 					}
 				}
 				if(already_existed==false){
-					quickGoodsList.add(goodsVO);
+					quickGoodsList.add(goodsVO);	// 다르다면 quickGoodsList에 goodsVO를 추가
+					// 다르다면 상품이 없음
 				}
 			}
-			
+
 		}else{
 			quickGoodsList =new ArrayList<GoodsVO>();
 			quickGoodsList.add(goodsVO);
-			
 		}
+
+		//최근 본 상품을 세션에 저장
 		session.setAttribute("quickGoodsList",quickGoodsList);
+		//최근 본 상품 목록에 저장된 상품 개수를 세션에 저장
 		session.setAttribute("quickGoodsListNum", quickGoodsList.size());
+
+		//관계된 view : (goods) goodsDetail.jsp와 (common) quickMenu.jsp
 	}
 }

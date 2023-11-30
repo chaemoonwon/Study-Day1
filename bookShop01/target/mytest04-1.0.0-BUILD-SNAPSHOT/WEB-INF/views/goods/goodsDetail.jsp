@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8" 	isELIgnored="false"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>    
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <c:set var="goods"  value="${goodsMap.goodsVO}"  />
@@ -10,9 +10,9 @@
  <%
      //치환 변수 선언합니다.
       //pageContext.setAttribute("crcn", "\r\n"); //개행문자
-      pageContext.setAttribute("crcn" , "\n"); //Ajax로 변경 시 개행 문자 
+      pageContext.setAttribute("crcn" , "\n"); //Ajax로 변경 시 개행 문자
       pageContext.setAttribute("br", "<br/>"); //br 태그
-%>  
+%>
 <html>
 <head>
 
@@ -44,7 +44,7 @@
 
 #close {
 	z-index: 4;
-	
+
 	position: absolute;
     top: 5px;
     right: 10px;
@@ -52,31 +52,37 @@
 </style>
 <script type="text/javascript">
 	function add_cart(goods_id) {
+
+
 		$.ajax({
 			type : "post",
 			async : false, //false인 경우 동기식으로 처리한다.
 			url : "${contextPath}/cart/addGoodsInCart.do",
 			data : {
-				goods_id:goods_id
-				
+				goods_id : goods_id
 			},
 			success : function(data, textStatus) {
 				//alert(data);
-			//	$('#message').append(data);
-				if(data.trim()=='add_success'){
-					imagePopup('open', '.layer01');	
-				}else if(data.trim()=='already_existed'){
-					alert("이미 카트에 등록된 상품입니다.");	
+				//	$('#message').append(data);
+				if (data.trim() == 'add_success') {
+					imagePopup('open', '.layer01');
+				} else if (data.trim() == 'already_existed') {
+					alert("이미 카트에 등록된 상품입니다.");
+				} else if (data.trim() == 'log_on') {
+					alert("로그인 후 이용해 주세요 ..")
+					// 로그인이 필요한 경우 로그인 페이지로 이동
+					window.location.href = "${contextPath}/member/loginForm.do";
 				}
-				
 			},
 			error : function(data, textStatus) {
-				alert("에러가 발생했습니다."+data);
+				if (data.trim() == 'log_on') {
+					alert("로그인 후 이용가능 합니다...")
+				};
 			},
 			complete : function(data, textStatus) {
 				//alert("작업을완료 했습니다");
 			}
-		}); //end ajax	
+		}); //end ajax
 	}
 
 	function imagePopup(type) {
@@ -94,49 +100,52 @@
 			jQuery('#layer').attr('style', 'visibility:hidden');
 		}
 	}
-	
+
 function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 	var _isLogOn=document.getElementById("isLogOn");
 	var isLogOn=_isLogOn.value;
-	
+
 	 if(isLogOn=="false" || isLogOn=='' ){
 		alert("로그인 후 주문이 가능합니다!!!");
-	} 
-	
-	
+	}
+
+
 		var total_price,final_total_price;
 		var order_goods_qty=document.getElementById("order_goods_qty");
-		
+
 		var formObj=document.createElement("form");
-		var i_goods_id = document.createElement("input"); 
+		var i_goods_id = document.createElement("input");
     var i_goods_title = document.createElement("input");
     var i_goods_sales_price=document.createElement("input");
     var i_fileName=document.createElement("input");
     var i_order_goods_qty=document.createElement("input");
-    
+
     i_goods_id.name="goods_id";
     i_goods_title.name="goods_title";
     i_goods_sales_price.name="goods_sales_price";
     i_fileName.name="goods_fileName";
     i_order_goods_qty.name="order_goods_qty";
-    
+
     i_goods_id.value=goods_id;
     i_order_goods_qty.value=order_goods_qty.value;
     i_goods_title.value=goods_title;
     i_goods_sales_price.value=goods_sales_price;
     i_fileName.value=fileName;
-    
+
     formObj.appendChild(i_goods_id);
     formObj.appendChild(i_goods_title);
     formObj.appendChild(i_goods_sales_price);
     formObj.appendChild(i_fileName);
     formObj.appendChild(i_order_goods_qty);
 
-    document.body.appendChild(formObj); 
+    document.body.appendChild(formObj);
     formObj.method="post";
     formObj.action="${contextPath}/order/orderEachGoods.do";
     formObj.submit();
-	}	
+	}
+
+
+
 </script>
 </head>
 <body>
@@ -220,24 +229,24 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 			</tbody>
 		</table>
 		<ul>
-		
-			
+
+
 <%-- 			<li><a class="buy" href="javascript:fn_order_each_goods('${goods.goods_id }','${goods.goods_title }','${goods.goods_sales_price}','${goods.goods_fileName}');">구매하기 </a></li> --%>
 			<button type="button" class="buy btn btn-outline-success" onclick="fn_order_each_goods('${goods.goods_id }','${goods.goods_title }','${goods.goods_sales_price}','${goods.goods_fileName}');">구매하기</button>
 			&nbsp;&nbsp;&nbsp;
 			<%-- <li><a class="cart" href="javascript:add_cart('${goods.goods_id }')">장바구니</a></li> --%>
-			<button type="button" class="cart btn btn-outline-primary" onclick="add_cart('${goods.goods_id }')">장바구니</button>
+			<button type="button" class="cart btn btn-outline-primary" onclick="add_cart('${goods.goods_id }');">장바구니</button>
 			&nbsp;&nbsp;&nbsp;
-			
+
 			<!-- <li><a class="wish" href="#">위시리스트</a></li> -->
 			<button type="button" class="wish btn btn-outline-secondary">위시리스트</button>
-			
+
 		</ul>
 	</div>
-	
-	
-	
-	
+
+
+
+
 	<div class="clear"></div>
 	<!-- 내용 들어 가는 곳 -->
 	<div id="container">
@@ -254,7 +263,7 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 				<h4>책소개</h4>
 				<p>${fn:replace(goods.goods_intro,crcn,br)}</p>
 				<c:forEach var="image" items="${imageList }">
-					<img 
+					<img
 						src="${contextPath}/download.do?goods_id=${goods.goods_id}&fileName=${image.fileName}">
 				</c:forEach>
 			</div>
@@ -262,16 +271,16 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 				<h4>저자소개</h4>
 				<p>
 				<div class="writer">저자 : ${goods.goods_writer}</div>
-				 <p>${fn:replace(goods.goods_writer_intro,crcn,br) }</p> 
-				
+				 <p>${fn:replace(goods.goods_writer_intro,crcn,br) }</p>
+
 			</div>
 			<div class="tab_content" id="tab3">
 				<h4>책목차</h4>
-				<p>${fn:replace(goods.goods_contents_order,crcn,br)}</p> 
+				<p>${fn:replace(goods.goods_contents_order,crcn,br)}</p>
 			</div>
 			<div class="tab_content" id="tab4">
 				<h4>출판사서평</h4>
-				 <p>${fn:replace(goods.goods_publisher_comment ,crcn,br)}</p> 
+				 <p>${fn:replace(goods.goods_publisher_comment ,crcn,br)}</p>
 			</div>
 			<div class="tab_content" id="tab5">
 				<h4>추천사</h4>
@@ -282,9 +291,9 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 			</div>
 		</div>
 	</div>
-	
-	
-	
+
+
+
 	<!-- 장바구니 담앗을대 팝업 -->
 	<div class="clear"></div>
 	<div id="layer" style="visibility: hidden">
@@ -293,11 +302,11 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 			<!-- 팝업창 닫기 버튼 -->
 			<a href="javascript:" onClick="javascript:imagePopup('close', '.layer01');"> <img
 				src="${contextPath}/resources/image/close.png" id="close" />
-			</a> <br /> 
+			</a> <br />
 			<font size="4" id="contents">장바구니에 담았습니다.</font><br>
-<form   action='${contextPath}/cart/myCartList.do'  >				
+<form   action='${contextPath}/cart/myCartList.do'  >
 		<button type="submit" class="btn btn-outline-dark">장바구니 보기</button>
-</form>			
+</form>
 </body>
 </html>
 <input type="hidden" name="isLogOn" id="isLogOn" value="${isLogOn}"/>

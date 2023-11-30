@@ -27,7 +27,7 @@ body {
 	color: rgb(102, 102, 102);
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 	font-size: 1em;
-	background-image: url("../imgs/body_back.gif");
+	background-image: url("../image/body_back.gif");
 	background-repeat: repeat-x;
 	background-color: rgb(255, 255, 255);
 }
@@ -47,7 +47,7 @@ a {
 
 
 
-/* ¿ÞÁ· »çÀÌµå¹Ù (Àå¸£) a ÅÂ±× ±ÛÀÚ ¼³Á¤ */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ (ï¿½å¸£) a ï¿½Â±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 .list-group-item a{
 	color: rgb(102, 102, 102);
 	text-decoration: none;
@@ -58,7 +58,7 @@ a {
 	text-decoration: none;
 }
 
-/* »çÀÌµå¹Ù È£¹ö½Ã ¹è°æ */
+/* ï¿½ï¿½ï¿½Ìµï¿½ï¿½ È£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ */
 .list-group-item:hover{
 	background-color: #e4e4e4;
 	transition: background-color 0.3s ease;
@@ -69,7 +69,7 @@ a {
 
 
 
-/* footer div a ±ÛÀÚ ¼³Á¤ */
+/* footer div a ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 .footerdiv a {
 	color: gray;
 	text-decoration: none;
@@ -81,7 +81,7 @@ a {
 
 
 
-/* a ÅÂ±× ¸¶¿ì½º ¿Ã·ÈÀ» ¶§ / hover / ±Ùµ¥ º° È¿°ú¾ø´Âµí */
+/* a ï¿½Â±ï¿½ ï¿½ï¿½ï¿½ì½º ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ / hover / ï¿½Ùµï¿½ ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ */
 a:hover {
 	color: #0080c02551020;
 	text-decoration: none;
@@ -169,7 +169,7 @@ header #search form {
 	
 }
 
-/* °Ë»öÃ¢ ±Û ³Ö¾î¼­ °Ë»öÇÏ´Â ¹Ú½º */
+/* ï¿½Ë»ï¿½Ã¢ ï¿½ï¿½ ï¿½Ö¾î¼­ ï¿½Ë»ï¿½ï¿½Ï´ï¿½ ï¿½Ú½ï¿½ */
 header #search .main_input {
 	font-weight: bold;
 	padding: 0px 15px;
@@ -189,7 +189,7 @@ header #search .main_input {
 }
 
 
-/* °Ë»ö ¹öÆ° */
+/* ï¿½Ë»ï¿½ ï¿½ï¿½Æ° */
 header #search .btn1 {
 	border: 1px solid rgb(51, 102, 153);
 	border-image: none;
@@ -491,8 +491,8 @@ article #sorting ul li a {
 
 
 
-/* Àå¹Ù±¸´Ï css */
-/* list view = »óÇ° ÃÑ °è»ê ¹Ú½º */
+/* ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ css */
+/* list view = ï¿½ï¿½Ç° ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ */
 article table#list_view {
 	width: 100%;
 	font-size: 0.75em;
@@ -694,7 +694,7 @@ article #detail_table {
  */}
 
 
-/* »óÇ° »ó¼¼ ÆäÀÌÁö ´ëÇ¥ ÀÌ¹ÌÁö */
+/* ï¿½ï¿½Ç° ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ ï¿½Ì¹ï¿½ï¿½ï¿½ */
 #goods_image figure img {
 	border: 1px solid rgb(255, 255, 255);
 	border-image: none;
@@ -733,7 +733,7 @@ article #detail_table {
     background-color: #ffffff;
     display: block;
     width: 630px;
-    overflow-y: auto; /* ¼¼·Î ½ºÅ©·ÑÀ» È°¼ºÈ­ÇÕ´Ï´Ù. */
+    overflow-y: auto; /* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­ï¿½Õ´Ï´ï¿½. */
 }
 
 
@@ -1012,14 +1012,14 @@ footer img {
     background-color: #000000;
     opacity: 0.8;
     z-index: 4;
-    display: none; /* Ã³À½¿¡´Â ¿ä¼Ò¸¦ ¼û±è */
+    display: none; /* Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 
 }
 
-/* 940px ÀÌ»óÀÇ È­¸é¿¡ ´ëÇÑ ¹Ìµð¾î Äõ¸® */
+/* 940px ï¿½Ì»ï¿½ï¿½ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 @media screen and (min-width: 1020px) {
     #sticky {
-        display: block; /* È­¸éÀÌ 940px ÀÌ»óÀÏ ¶§ ¿ä¼Ò¸¦ Ç¥½ÃÇÔ */
+        display: block; /* È­ï¿½ï¿½ï¿½ï¿½ 940px ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ò¸ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ */
     }
 }
 
@@ -1031,13 +1031,13 @@ footer img {
 }
 
 
-/* ÃÊ±â / ÃÖ±Ù º» ¸Þ´º °»½Å Àü */
+/* ï¿½Ê±ï¿½ / ï¿½Ö±ï¿½ ï¿½ï¿½ ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ */
 #sticky div+div h5 {
 	display: none;
 }
 
 
-/* ¿À¸¥ÂÊ Äü¸Þ´º ÃÖ±Ù º» ¸ñ·Ï ¼ýÀÚ °»½Å ÇÒ ¶§ ¸¶´Ù */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þ´ï¿½ ï¿½Ö±ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 #sticky div+div h5+h5 {
 	color: white;
 	line-height: 40px;
@@ -1047,7 +1047,7 @@ footer img {
 
 
 
-/* ¿À¸¥ÂÊ Äü¸Þ´º ÀÌÀü / ´ÙÀ½ */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½ï¿½ / ï¿½ï¿½ï¿½ï¿½ */
 #sticky div+div a {
     display: inline-block;
     padding-left: 9px; 
@@ -1058,14 +1058,14 @@ footer img {
     text-align: center;
     text-decoration: none;
     transition: color 0.3s ease;
-    line-height: 30px; /* ºÎ¸ð ÄÁÅ×ÀÌ³ÊÀÇ ³ôÀÌ¿¡ ¸Â°Ô Á¶Àý */
+    line-height: 30px; /* ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¿ï¿½ ï¿½Â°ï¿½ ï¿½ï¿½ï¿½ï¿½ */
     
 }
 
 
 
 #sticky div+div a:hover {
-    color: #6ab5ff; /* ¸¶¿ì½º È£¹ö ½Ã º¯°æÇÒ »ö»ó (³ë¶õ»ö) */
+    color: #6ab5ff; /* ï¿½ï¿½ï¿½ì½º È£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½) */
     
 }
 
@@ -1233,7 +1233,7 @@ footer img {
 	border-collapse: collapse;
 }
 
-/* ÁÖ¹®È®ÀÎ ÆË¾÷ */
+/* ï¿½Ö¹ï¿½È®ï¿½ï¿½ ï¿½Ë¾ï¿½ */
 .detail_table table td {
 	padding: 7px 0px 7px 10px;
 	border-right: 0.5px solid black;
@@ -1431,7 +1431,7 @@ article h1_TITLE {
 
 
 
-/* °Ë»öÃ¢  ¿¬°ü°Ë»ö¾î Å« Æ²*/
+/* ï¿½Ë»ï¿½Ã¢  ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ Å« Æ²*/
 div #suggest {
 	position: absolute;
 	
@@ -1440,7 +1440,7 @@ div #suggest {
 
 	width:450px;
 	
-	border-width: 0 2px 2px 2px; /* À§ÂÊÀ» Á¦¿ÜÇÑ ´Ù¸¥ ¼¼ º¯¿¡¸¸ border Àû¿ë */
+	border-width: 0 2px 2px 2px; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ border ï¿½ï¿½ï¿½ï¿½ */
     border-style: solid;
     border-color: rgb(51, 102, 153);
         
@@ -1466,7 +1466,7 @@ div #suggest {
 
 
 
-/* ½ÇÁ¦ °Ë»ö¾î */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½ï¿½ */
 #suggestList a {
 	display:block;
     padding:0px 10px;  
@@ -1476,7 +1476,7 @@ div #suggest {
     text-decoration: none;
 }
 
-/* °Ë»öÃ¢°ú ¿¬°ü°Ë»ö¾î Ç¥½Ã Ã¢ ¶ç¿ì±â */
+/* ï¿½Ë»ï¿½Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ Ã¢ ï¿½ï¿½ï¿½ï¿½ */
 #suggestList a:first-child {
     padding-top: 30px;  
     
